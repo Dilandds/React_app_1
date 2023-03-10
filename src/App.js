@@ -1,8 +1,10 @@
+import React, { useState } from "react";
+
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 function App() {
-  const expenses = [
+  const initialexpenses = [
     {
       id: "e1",
       title: "Toilet Paper",
@@ -24,14 +26,23 @@ function App() {
     },
   ];
 
+  const [expenses, setExpenses] = useState(initialexpenses);
+  // const [year, setYear] = useState("2020");
+
+  // const getYear = (seletedyear) => {
+  //   console.log("App");
+  //   console.log(seletedyear);
+  //   setYear(seletedyear);
+  // };
+
   const addToExpenses = (data) => {
-    expenses.push(data);
-    console.log(expenses);
+    setExpenses((prevExpenses) => [data, ...prevExpenses]);
   };
+
   return (
     <div>
       <NewExpense onSubmitDataApp={addToExpenses}></NewExpense>
-      <Expenses items={expenses}></Expenses>
+      <Expenses items={expenses} /*</div>onYearChange={getYear}*/></Expenses>
     </div>
   );
 }
