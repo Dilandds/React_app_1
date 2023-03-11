@@ -26,7 +26,7 @@ const ExpenseForm = (props) => {
     //saving the data inside the form when the subit is pressed
     const formData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
     props.onSubmitData(formData);
